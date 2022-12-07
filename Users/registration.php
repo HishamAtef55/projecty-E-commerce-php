@@ -26,28 +26,28 @@ include_once('header.php')
 
 if (isset($_POST['submit'])) {
 
-  $user_username = validate($_POST['user_username']);
-  $user_email = validate($_POST['user_email']);
-  $user_phone = intval($_POST['user_phone']);
-  $user_password = validate($_POST['user_password']);
-  if ($user_username != null and $user_password != null and $user_phone != null and $user_email != null) {
+    $user_username = validate($_POST['user_username']);
+    $user_email = validate($_POST['user_email']);
+    $user_phone = intval($_POST['user_phone']);
+    $user_password = validate($_POST['user_password']);
+    if ($user_username != null and $user_password != null and $user_phone != null and $user_email != null) {
 
 
-    $user_password = enc_pass($user_password);
-    $sql = "INSERT INTO users  
+        $user_password = enc_pass($user_password);
+        $sql = "INSERT INTO users  
         VALUES
         (NULL,'$user_username','$user_password',
         '$user_phone','$user_email')";
 
-    $result = mysqli_query($con, $sql);
+        $result = mysqli_query($con, $sql);
 
-    if ($result) {
-      output_msg('s', 'account added successfully ');
-      redirect(2, 'index.php');
-    } else {
-      output_msg('f', 'account not added');
+        if ($result) {
+            output_msg('s', 'account added successfully ');
+            redirect(2, 'index.php');
+        } else {
+            output_msg('f', 'account not added');
+        }
     }
-  }
 } else {
 ?>
 <section id="formSection">
@@ -97,9 +97,22 @@ if (isset($_POST['submit'])) {
                                     class="bi bi-key w"></i></span>
                             <input type="password" class="form-control" id="password" placeholder="Password"
                                 aria-describedby="passwordFeedback" name="user_password" />
+                            <span class="input-group-text back-ground" onclick="change()">
+                                <i class="fa-solid fa-eye"></i>
+                            </span>
+                            <script>
+                            function change() {
+                                var showpass = document.getElementById("password");
+                                const type =
+                                    showpass.getAttribute("type") === "password" ? "text" : "password";
+                                showpass.setAttribute("type", type);
+                            }
+                            </script>
+
                             <div id="passwordFeedback" class="invalid-feedback">
                                 Password must be 8 chars at least and at least 1 capital letter , 1 small , 1 number .
                             </div>
+
                         </div>
 
 
