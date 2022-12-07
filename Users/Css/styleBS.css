@@ -1,0 +1,31 @@
+* {
+    font-family: cursive;
+}
+.footer {
+    background-color: #201b18;
+    color: #fff;
+}
+
+.footer a {
+    color: #fff !important;
+}
+
+.footer-container h3:after {
+    content: '';
+    width: 50px;
+    height: 3px;
+    background-color: #9c867b;
+    display: block;
+    margin-top: 16px;
+}
+
+
+.loginHeader h3 {
+    font-size: 28px;
+}
+
+.display-block {
+
+    display: block;
+}
+
